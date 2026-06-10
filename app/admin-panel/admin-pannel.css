@@ -1,0 +1,108 @@
+.admin-panel-page {
+  min-height: 100vh;
+  background: #f4f6fa;
+  color: black;
+}
+
+.panel-topbar {
+  height: 70px;
+  background: #1f2d3d;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.panel-topbar h2 {
+  font-size: 26px;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.home-icon-small {
+  position: absolute;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: none;
+}
+
+.logout-btn {
+  position: absolute;
+  right: 24px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 13px 23px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.panel-container {
+  width: 90%;
+  margin: 34px auto;
+}
+
+.panel-card {
+  background: white;
+  padding: 28px;
+  border-radius: 10px;
+  margin-bottom: 32px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+}
+
+.panel-card h3 {
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+.panel-input {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.user-table th {
+  background: #007bff;
+  color: white;
+  padding: 14px;
+}
+
+.user-table td {
+  padding: 13px;
+  border-bottom: 1px solid #ddd;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}

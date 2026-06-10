@@ -1,0 +1,52 @@
+.admin-page {
+  min-height: 100vh;
+  background: linear-gradient(to right, #3a8ec4, #69c7ef);
+}
+
+.home-icon {
+  width: 55px;
+  height: 55px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  margin: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.login-box {
+  width: 420px;
+  background: #f2f2f2;
+  padding: 40px;
+  border-radius: 12px;
+  margin: 140px auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.login-box h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.login-input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background: #2f83bf;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 17px;
+  cursor: pointer;
+}

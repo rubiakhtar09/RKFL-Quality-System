@@ -1,0 +1,191 @@
+.quality-page {
+  min-height: 100vh;
+  background: #f3f5f9;
+  color: #000;
+}
+
+.quality-card {
+  width: 66%;
+  margin: 48px auto;
+  background: white;
+  padding: 32px 36px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.13);
+}
+
+.rkfl-logo {
+  width: 170px;
+  position: absolute;
+  top: 22px;
+  left: 18px;
+  object-fit: contain;
+}
+
+.form-icons {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  display: flex;
+  gap: 14px;
+}
+
+.form-icons button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 13px rgba(0,0,0,0.18);
+}
+
+.quality-card h1 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  margin: 24px 0 55px;
+}
+
+.quality-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px 22px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  padding: 0 14px;
+  font-size: 15px;
+  background: white;
+}
+
+.submit-quality-btn {
+  width: 100%;
+  height: 48px;
+  margin-top: 34px;
+  background: #2f80ed;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.submit-quality-btn:hover {
+  background: #1d6ed8;
+}
+
+.breakdown-box {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid #bcd7ff;
+  border-radius: 10px;
+  background: #f8fbff;
+}
+
+.breakdown-box h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #1f2937;
+  border-left: 5px solid #2f80ed;
+  padding-left: 12px;
+}
+
+.breakdown-box p {
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: #374151;
+}
+
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 22px;
+}
+
+.breakdown-table th {
+  background: #2f80ed;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.breakdown-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.breakdown-table select,
+.breakdown-table input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.breakdown-table small {
+  display: block;
+  margin-top: 8px;
+  color: #1d4ed8;
+  font-size: 12px;
+}
+
+.add-row-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.remove-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 11px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.total-row-box {
+  border: 1px solid #9ec5fe;
+  background: #eef6ff;
+  color: #143c8c;
+  padding: 14px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.react-select-container {
+  width: 100%;
+}
+
+.react-select__control {
+  min-height: 44px !important;
+  border: 1px solid #bbb !important;
+  border-radius: 5px !important;
+}
+
+.react-select__value-container {
+  padding: 2px 12px !important;
+}
+
+.react-select__menu {
+  z-index: 9999 !important;
+}

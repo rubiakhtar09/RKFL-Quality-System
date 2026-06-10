@@ -1,0 +1,65 @@
+.operator-page {
+  min-height: 100vh;
+  background: linear-gradient(to right, #18b58c, #39d26c);
+}
+
+.operator-box {
+  width: 420px;
+  background: #f3f3f3;
+  padding: 40px;
+  border-radius: 12px;
+  margin: 140px auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.operator-box h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.operator-input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.operator-button {
+  width: 100%;
+  padding: 14px;
+  background: #1ea88f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.home-icon{
+  position: absolute;
+  top: 80px;
+  left: 30px;
+
+  width: 70px;
+  height: 70px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 34px;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+
+  transition: .2s;
+}
+
+.home-icon:hover{
+  transform: scale(1.08);
+}

@@ -1,0 +1,84 @@
+.dashboard-selection-page {
+  min-height: 100vh;
+  background: #e9eef4;
+  font-family: Arial, sans-serif;
+}
+
+/* 🔵 Header */
+.topbar {
+  background: #1f5aa6;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 🔹 Content */
+.dashboard-content {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.dashboard-content h1 {
+  color: #1f5aa6;
+  margin-bottom: 5px;
+}
+
+.dashboard-content p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* 🔥 Cards */
+.dashboard-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Card Style */
+.dashboard-card {
+  background: #f5f5f5;
+  width: 280px;
+  padding: 30px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.dashboard-card h3 {
+  margin: 10px 0;
+  color: #222;
+}
+
+.dashboard-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 🔙 Button */
+.back-btn {
+  margin-top: 40px;
+  padding: 10px 30px;
+  background: #1f5aa6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #174a8a;
+}

@@ -1,26 +1,118 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #061b21, #1f4b56);
+  color: white;
+}
+
+.topbar {
+  height: 44px;
+  background: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.topbar h3 {
+  font-size: 14px;
+  color: #b9d8ff;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+}
+
+.left-icons,
+.right-icons {
+  position: absolute;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  font-size: 24px;
+  color: #9fb0bd;
+}
+
+.left-icons {
+  left: 16px;
+}
+
+.right-icons {
+  right: 16px;
+}
+
+.main-section {
+  height: calc(100vh - 44px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.role-card {
+  width: 460px;
+  min-height: 500px;
+  background: rgba(65, 91, 99, 0.85);
+  border-radius: 16px;
+  padding: 58px 55px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.role-card h1 {
+  font-size: 38px;
+  line-height: 1.12;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.role-card p {
+  font-size: 16px;
+  margin-bottom: 45px;
+  color: #ffffff;
+}
+
+.btn {
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 22px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: Georgia, "Times New Roman", serif;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.admin-btn {
+  background: #4caf50 ;
+  color: white;
+}
+
+.operator-btn {
+  background: #2196f3;
+  color: white;
+}
+
+.dashboard-btn {
+  background: #eeeeee;
+  color: #000000;
 }

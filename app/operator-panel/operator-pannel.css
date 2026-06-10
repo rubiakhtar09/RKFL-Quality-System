@@ -1,0 +1,94 @@
+.operator-panel-page {
+  min-height: 100vh;
+  background: #eef1f7;
+}
+
+.operator-navbar {
+  height: 85px;
+  background: #0d5ab8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.operator-navbar h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.operator-main {
+  text-align: center;
+  padding-top: 70px;
+}
+
+.operator-main h2 {
+  color: #0d5ab8;
+  font-size: 52px;
+}
+
+.operator-main p {
+  margin-top: 10px;
+  color: #444;
+  font-size: 22px;
+}
+
+.form-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.form-card {
+  width: 330px;
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+}
+
+.card-icon {
+  font-size: 55px;
+  margin-bottom: 20px;
+}
+
+.form-card h3 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.form-card p {
+  font-size: 18px;
+  color: #555;
+}
+
+.logout-btn-op {
+  margin-top: 55px;
+  background: #df554d;
+  color: white;
+  border: none;
+  padding: 16px 34px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.form-card {
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.form-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+}
+
+.form-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
