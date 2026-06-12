@@ -7,9 +7,11 @@
 
 .dashboard-actions {
   display: flex;
+  align-items: flex-start;
   gap: 12px;
   margin: 25px 0;
   position: relative;
+  flex-wrap: nowrap;
 }
 
 .dashboard-actions button {
@@ -20,6 +22,9 @@
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+
+  height: 48px;
+  white-space: nowrap;
 }
 
 .kpi-grid {
@@ -32,15 +37,16 @@
 .kpi-card {
   background: white;
   border-radius: 16px;
-  padding: 25px;
+  padding: 18px;
   text-align: center;
+  min-height: 130px;
   box-shadow: 0 4px 12px rgba(0,0,0,.08);
 }
 
 .kpi-card strong {
   display:block;
-  margin-top:15px;
-  font-size:52px;
+  margin-top:10px;
+  font-size:32px;
   font-weight:800;
   color:#1e293b;
 }
@@ -135,36 +141,47 @@
 
 .kpi-card {
   font-family: Arial, sans-serif;
-  font-size: 26px;
+  font-size: 16px;
   font-weight: 700;
 }
 
 .filterInfoBox{
+  width:100%;
+  margin-top:20px;
+
   background:#f5f9ff;
   border:1px solid #c7d9ff;
   border-radius:12px;
-  padding:18px;
-  margin:20px 0;
+
+  padding:12px 14px;
+  margin:0;
+
+  min-height:auto;
 }
 
 .filterInfoBox p{
   color:#2563eb;
-  font-weight:600;
-  margin-bottom:15px;
+  font-weight:700;
+  margin-bottom:8px;
+  font-size:14px;
 }
 
-.filterTags{
+.filterChips{
   display:flex;
-  gap:12px;
+  align-items:center;
+  gap:8px;
   flex-wrap:wrap;
 }
 
-.filterTags span{
+.filterChips span{
   background:white;
   border:1px solid #c7d9ff;
   color:#2563eb;
-  padding:8px 14px;
+
+  padding:6px 12px;
   border-radius:20px;
+
+  font-size:13px;
   font-weight:600;
 }
 
@@ -206,6 +223,7 @@
   padding:8px 16px;
   border-radius:20px;
   font-weight:700;
+  
 }
 
 .percent-badge{
@@ -680,4 +698,45 @@
 .backButton:hover{
   background:#1e293b;
   transform:translateY(-2px);
+}
+
+.applyFilterCard{
+  margin:20px;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+}
+
+.applyFilterCard h2{
+  margin-bottom:20px;
+  font-size:32px;
+  font-weight:800;
+}
+
+.applyFilterCard label{
+  display:block;
+  margin-bottom:10px;
+  font-weight:700;
+  color:#374151;
+}
+
+.applyFilterCard select{
+  width:300px;
+  height:48px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  padding:0 12px;
+  font-size:16px;
+  margin-right:12px;
+}
+
+.applyBtn{
+  background:#2563eb;
+  color:white;
+  border:none;
+  height:48px;
+  padding:0 20px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
 }

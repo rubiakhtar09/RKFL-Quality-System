@@ -45,7 +45,7 @@ import {
 } from "recharts";
 
 export default function MachiningDashboard() {
-const [showFilter, setShowFilter] = useState(false);
+const [filterType, setFilterType] = useState("");
 const router = useRouter();
 
 const [selectedPeriod, setSelectedPeriod] =
@@ -273,16 +273,13 @@ return (
           <p>RKFL Quality Monitoring System</p>
         </div>
       </div>
-
       {/* BUTTONS */}
       <div className="buttonRow">
         <button className="green" onClick={handleDownloadExcel}>Download Excel</button>
         <button
   className="green"
   onClick={() =>
-    setShowFilter(
-      !showFilter
-    )
+    { setFilterType("period") }
   }
 >
   Filter
@@ -291,11 +288,7 @@ return (
     <button
   className="green"
   onClick={() =>
-    setSelectedCompany(
-      selectedCompany
-        ? ""
-        : "open"
-    )
+    { setFilterType("company") }
   }
 >
   Company Wise
@@ -303,11 +296,7 @@ return (
         <button
   className="green"
   onClick={() =>
-    setSelectedItem(
-      selectedItem
-        ? ""
-        : "open"
-    )
+    { setFilterType("item")}
   }
 >
   Item Wise
@@ -319,11 +308,7 @@ return (
         <button
   className="green"
   onClick={() =>
-    setSelectedHeat(
-      selectedHeat
-        ? ""
-        : "open"
-    )
+    { setFilterType("heat") }
   }
 >
   Heat Wise
@@ -331,7 +316,7 @@ return (
         <button
   className="red"
   onClick={() => {
-    setShowFilter(false);
+    setFilterType("");
 
     setSelectedPeriod("current-month");
 
@@ -351,70 +336,6 @@ return (
 </button>
 
       </div>
-{
-  selectedCompany === "open" && (
-    <div className="itemModal">
-
-      <h3>Select Company</h3>
-
-      {companyList.map(
-        (company, index) => (
-          <button
-            key={index}
-            className="itemBtn"
-            onClick={() => {
-              setSelectedCompany(company);
-            }}
-          >
-            {company}
-          </button>
-        )
-      )}
-
-    </div>
-  )
-}
-
-
-{
-  selectedItem === "open" && (
-    <div className="itemModal">
-      <h3>Select Item</h3>
-
-      {itemList.map((item, index) => (
-        <button
-          key={index}
-          className="itemBtn"
-          onClick={() => {
-            setSelectedItem(item);
-          }}
-        >
-          {item}
-        </button>
-      ))}
-    </div>
-  )
-}
-
-{
-  selectedHeat === "open" && (
-    <div className="heatModal">
-      <h3>Select Heat Code</h3>
-
-      {heatList.map((heat, index) => (
-        <button
-          key={index}
-          className="heatBtn"
-          onClick={() => {
-            setSelectedHeat(heat);
-          }}
-        >
-          {heat}
-        </button>
-      ))}
-    </div>
-  )
-}
 
       {/* FILTER BOX */}
 
@@ -445,108 +366,176 @@ return (
           {toDate && <span>To: {toDate}</span>}
         </div>
       </div>
+      {
+  filterType && (
+
+    <div className="applyFilterCard">
+
+      <h2>Apply Filter</h2>
 
       {
-  showFilter && (
+        filterType === "period" && (
+          <>
+            <div>
+              <label>Select Period</label>
 
-    <div className="filterModal">
+              <select
+                value={selectedPeriod}
+                onChange={(e)=>
+                  setSelectedPeriod(
+                    e.target.value
+                  )
+                }
+              >
+                <option value="last-week">
+                  Last Week
+                </option>
 
-      <h3>
-        Filter Dashboard
-      </h3>
+                <option value="current-week">
+                  Current Week
+                </option>
 
-      <div className="filterOptions">
+                <option value="last-month">
+                  Last Month
+                </option>
 
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "last-week"
-            )
-          }
-        >
-          Last Week
-        </button>
+                <option value="custom">
+                  Custom
+                </option>
+              </select>
+            </div>
 
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "current-week"
-            )
-          }
-        >
-          Current Week
-        </button>
+            {
+              selectedPeriod === "custom" && (
+                <div className="customDateWrap">
+                  <input
+                    type="date"
+                    value={fromDate}
+                    onChange={(e)=>
+                      setFromDate(
+                        e.target.value
+                      )
+                    }
+                  />
 
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "last-month"
-            )
-          }
-        >
-          Last Month
-        </button>
-
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "custom"
-            )
-          }
-        >
-          Custom
-        </button>
-
-      </div>
+                  <input
+                    type="date"
+                    value={toDate}
+                    onChange={(e)=>
+                      setToDate(
+                        e.target.value
+                      )
+                    }
+                  />
+                </div>
+              )
+            }
+          </>
+        )
+      }
 
       {
-        selectedPeriod ===
-          "custom" && (
+        filterType === "company" && (
+          <div>
+            <label>Select Company</label>
 
-          <div
-            className="customDateWrap"
-          >
-
-            <label>
-              From
-            </label>
-
-            <input
-              type="date"
-              value={fromDate}
+            <select
+              value={selectedCompany}
               onChange={(e)=>
-                setFromDate(
+                setSelectedCompany(
                   e.target.value
                 )
               }
-            />
+            >
+              <option value="">
+                All Companies
+              </option>
 
-            <label>
-              To
-            </label>
-
-            <input
-              type="date"
-              value={toDate}
-              onChange={(e)=>
-                setToDate(
-                  e.target.value
-                )
-              }
-            />
-
+              {companyList.map((company)=>(
+                <option
+                  key={company}
+                  value={company}
+                >
+                  {company}
+                </option>
+              ))}
+            </select>
           </div>
         )
       }
 
+      {
+        filterType === "item" && (
+          <div>
+            <label>Select Item</label>
+
+            <select
+              value={selectedItem}
+              onChange={(e)=>
+                setSelectedItem(
+                  e.target.value
+                )
+              }
+            >
+              <option value="">
+                All Products
+              </option>
+
+              {itemList.map((item)=>(
+                <option
+                  key={item}
+                  value={item}
+                >
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+        )
+      }
+
+      {
+        filterType === "heat" && (
+          <div>
+            <label>Select Heat Code</label>
+
+            <select
+              value={selectedHeat}
+              onChange={(e)=>
+                setSelectedHeat(
+                  e.target.value
+                )
+              }
+            >
+              <option value="">
+                All Heat Codes
+              </option>
+
+              {heatList.map((heat)=>(
+                <option
+                  key={heat}
+                  value={heat}
+                >
+                  {heat}
+                </option>
+              ))}
+            </select>
+          </div>
+        )
+      }
+
+      <button
+        className="applyBtn"
+        onClick={() =>
+          setFilterType("")
+        }
+      >
+        Apply Filter
+      </button>
+
     </div>
   )
 }
-
       {/* KPI */}
       <div className="kpiGrid">
         {kpiData.map((item, i) => (
@@ -965,7 +954,6 @@ Selected product ka raw rejected pieces breakdown
 <th>Operator</th>
 <th>Date</th>
 <th>Shift</th>
-<th>Stage</th>
 <th>Image</th>
 </tr>
 </thead>
@@ -990,8 +978,6 @@ Selected product ka raw rejected pieces breakdown
 <td>{r[6]}</td>
 <td>{r[7]}</td>
 <td>{r[8]}</td>
-<td>{r[9]}</td>
-
 <td>
 <button className="viewBtn">
 Open Image

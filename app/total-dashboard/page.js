@@ -28,12 +28,13 @@ export default function TotalDashboard() {
   const [showBreakdown, setShowBreakdown] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const [showFilter, setShowFilter] = useState(false);
-
 const [selectedPeriod, setSelectedPeriod] =
   useState("current-month");
 
 const [selectedItem, setSelectedItem] =
+  useState("");
+
+const [filterType, setFilterType] =
   useState("");
 
 const [selectedHeat, setSelectedHeat] =
@@ -274,24 +275,22 @@ const downloadExcel = () => {
   style={{ position: "relative" }}
 >
   <button
-  onClick={downloadExcel}
->
-  Download Excel
-</button>
+    onClick={downloadExcel}
+  >
+    Download Excel
+  </button>
 
   <button
-    onClick={() =>
-      setShowFilter(!showFilter)
-    }
+    onClick={() => {
+      setFilterType("period");
+    }}
   >
     Filter
   </button>
 
   <button
     onClick={() => {
-      setSelectedItem("open");
-      setSelectedHeat("");
-      setShowFilter(false);
+      setFilterType("item");
     }}
   >
     Item Wise
@@ -299,9 +298,7 @@ const downloadExcel = () => {
 
   <button
     onClick={() => {
-      setSelectedHeat("open");
-      setSelectedItem("");
-      setShowFilter(false);
+      setFilterType("heat");
     }}
   >
     Heat Wise
@@ -309,7 +306,7 @@ const downloadExcel = () => {
 
   <button
     onClick={() => {
-      setShowFilter(false);
+      setFilterType("");
       setSelectedPeriod("current-month");
       setSelectedItem("");
       setSelectedHeat("");
@@ -319,45 +316,193 @@ const downloadExcel = () => {
   >
     Clear Filter
   </button>
-
-  {selectedItem === "open" && (
-    <div className="itemModal">
-      <h3>Select Item</h3>
-
-      {itemList.map((item, index) => (
-        <button
-          key={index}
-          className="itemBtn"
-          onClick={() => {
-            setSelectedItem(item);
-          }}
-        >
-          {item}
-        </button>
-      ))}
-    </div>
-  )}
-
-  {selectedHeat === "open" && (
-    <div className="heatModal">
-      <h3>Select Heat Code</h3>
-
-      {heatList.map((heat, index) => (
-        <button
-          key={index}
-          className="heatBtn"
-          onClick={() => {
-            setSelectedHeat(heat);
-          }}
-        >
-          {heat}
-        </button>
-      ))}
-    </div>
-  )}
 </div>
 
+<div className="filterInfoBox">
 
+  <p>
+    Selected dashboard data is showing according
+    to your applied filter.
+  </p>
+
+  <div className="filterChips">
+
+    <span>
+      Period: {selectedPeriod}
+    </span>
+
+    {selectedItem && (
+      <span>
+        Item: {selectedItem}
+      </span>
+    )}
+
+    {selectedHeat && (
+      <span>
+        Heat: {selectedHeat}
+      </span>
+    )}
+
+    {fromDate && (
+      <span>
+        From: {fromDate}
+      </span>
+    )}
+
+    {toDate && (
+      <span>
+        To: {toDate}
+      </span>
+    )}
+
+  </div>
+
+</div>
+
+{filterType && (
+
+<div className="applyFilterCard">
+
+  <h2>Apply Filter</h2>
+
+  {filterType === "period" && (
+
+    <>
+      <label>
+        Select Period
+      </label>
+
+      <select
+        value={selectedPeriod}
+        onChange={(e)=>
+          setSelectedPeriod(
+            e.target.value
+          )
+        }
+      >
+        <option value="last-week">
+          Last Week
+        </option>
+
+        <option value="current-week">
+          Current Week
+        </option>
+
+        <option value="last-month">
+          Last Month
+        </option>
+
+        <option value="custom">
+          Custom
+        </option>
+      </select>
+
+      {selectedPeriod === "custom" && (
+
+        <div
+          className="customDateWrap"
+        >
+          <input
+            type="date"
+            value={fromDate}
+            onChange={(e)=>
+              setFromDate(
+                e.target.value
+              )
+            }
+          />
+
+          <input
+            type="date"
+            value={toDate}
+            onChange={(e)=>
+              setToDate(
+                e.target.value
+              )
+            }
+          />
+        </div>
+
+      )}
+
+    </>
+  )}
+
+  {filterType === "item" && (
+
+    <>
+      <label>
+        Select Item
+      </label>
+
+      <select
+        value={selectedItem}
+        onChange={(e)=>
+          setSelectedItem(
+            e.target.value
+          )
+        }
+      >
+        <option value="">
+          All Products
+        </option>
+
+        {itemList.map((item)=>(
+          <option
+            key={item}
+            value={item}
+          >
+            {item}
+          </option>
+        ))}
+      </select>
+    </>
+  )}
+
+  {filterType === "heat" && (
+
+    <>
+      <label>
+        Select Heat Code
+      </label>
+
+      <select
+        value={selectedHeat}
+        onChange={(e)=>
+          setSelectedHeat(
+            e.target.value
+          )
+        }
+      >
+        <option value="">
+          All Heat Codes
+        </option>
+
+        {heatList.map((heat)=>(
+          <option
+            key={heat}
+            value={heat}
+          >
+            {heat}
+          </option>
+        ))}
+      </select>
+    </>
+  )}
+
+  <button
+    type="button"
+    className="applyBtn"
+    onClick={() => {
+      setFilterType("");
+    }}
+  >
+    Apply Filter
+  </button>
+
+</div>
+
+)}
 
       {/* KPI Cards */}
       <div className="kpi-grid">
@@ -373,100 +518,8 @@ const downloadExcel = () => {
         <div className="kpi-card">Production Tonnage<br /><strong>2.85</strong></div>
       </div>
 
-      {
-  showFilter && (
+    
 
-    <div className="filterModal">
-
-      <h3>Filter Dashboard</h3>
-
-      <div className="filterOptions">
-
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "last-week"
-            )
-          }
-        >
-          Last Week
-        </button>
-
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "current-week"
-            )
-          }
-        >
-          Current Week
-        </button>
-
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "last-month"
-            )
-          }
-        >
-          Last Month
-        </button>
-
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "custom"
-            )
-          }
-        >
-          Custom
-        </button>
-
-      </div>
-
-      {
-        selectedPeriod ===
-          "custom" && (
-
-          <div
-            className="customDateWrap"
-          >
-
-            <label>From</label>
-
-            <input
-              type="date"
-              value={fromDate}
-              onChange={(e)=>
-                setFromDate(
-                  e.target.value
-                )
-              }
-            />
-
-            <label>To</label>
-
-            <input
-              type="date"
-              value={toDate}
-              onChange={(e)=>
-                setToDate(
-                  e.target.value
-                )
-              }
-            />
-
-          </div>
-        )
-      }
-
-    </div>
-  )
-}
       {/* Charts Placeholder */}
       {/* Quality Distribution */}
 <div className="chart-card full-width-chart">

@@ -348,37 +348,6 @@ tbody tr:nth-child(even){
   border:2px solid white;
 }
 
-.filterModal{
-  background:white;
-  margin-top:20px;
-  margin-left:135px;
-  width:420px;
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 8px 25px rgba(0,0,0,.15);
-}
-
-.filterModal h3{
-  margin:0 0 18px;
-  color:#111827;
-}
-
-.filterOptions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.filterOptionBtn{
-  border:none;
-  background:#2563eb;
-  color:white;
-  padding:10px 16px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:700;
-}
-
 .customDateWrap{
   margin-top:18px;
   display:flex;
@@ -575,4 +544,63 @@ tbody tr:nth-child(even){
 
 .breakdownTable tbody tr:nth-child(odd){
   background:#eef3fb;
+}
+
+.applyFilterCard{
+  background:#ffffff;
+  margin-top:20px;
+  margin-left:135px;
+  width:calc(100% - 270px);
+
+  border-radius:18px;
+  padding:22px;
+
+  display:flex;
+  align-items:flex-end;
+  gap:18px;
+  flex-wrap:wrap;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.applyFilterCard h2{
+  width:100%;
+  margin:0 0 12px;
+  color:#111827;
+  font-size:20px;
+  font-weight:800;
+}
+
+.applyFilterCard label{
+  display:block;
+  margin-bottom:6px;
+  font-size:14px;
+  font-weight:700;
+  color:#374151;
+}
+
+.applyFilterCard select,
+.applyFilterCard input{
+  width:165px;
+  height:42px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  padding:0 10px;
+  font-size:14px;
+  background:white;
+}
+
+.applyBtn{
+  border:none;
+  background:#16a34a;
+  color:white;
+  padding:11px 20px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+  height:42px;
+}
+
+.applyBtn:hover{
+  opacity:.92;
 }

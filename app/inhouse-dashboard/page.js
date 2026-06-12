@@ -37,7 +37,8 @@ import {
 } from "recharts";
 
 export default function InhouseDashboard() {
-const [showFilter, setShowFilter] = useState(false);
+const [filterType, setFilterType] =
+  useState("");
 const router = useRouter();
 
 const [selectedPeriod, setSelectedPeriod] =
@@ -261,224 +262,225 @@ return (
       </div>
 
       {/* BUTTONS */}
-      <div className="buttonRow">
-        <button className="green" onClick={handleDownloadExcel}>Download Excel</button>
-        <button
+
+<div className="buttonRow">
+
+  <button
+  className="green"
+  onClick={handleDownloadExcel}
+>
+  Download Excel
+</button>
+
+  <button
   className="green"
   onClick={() =>
-    setShowFilter(
-      !showFilter
-    )
+    setFilterType("period")
   }
 >
   Filter
 </button>
-        <button
+
+  <button
   className="green"
   onClick={() =>
-    setSelectedItem(
-      selectedItem
-        ? ""
-        : "open"
-    )
+    setFilterType("item")
   }
 >
   Item Wise
 </button>
 
-
-
-
-        <button
+  <button
   className="green"
   onClick={() =>
-    setSelectedHeat(
-      selectedHeat
-        ? ""
-        : "open"
-    )
+    setFilterType("heat")
   }
 >
   Heat Wise
 </button>
-        <button
-  className="red"
-  onClick={() => {
-    setShowFilter(false);
-    setSelectedPeriod("current-month");
-    setSelectedItem("");
-    setSelectedHeat("");
-    setFromDate("");
-    setToDate("");
-  }}
->
-  Clear Filter
-</button>
 
-      </div>
+  <button
+    className="red"
+    onClick={() => {
+      setShowFilter("");
+      setSelectedPeriod("current-month");
+      setSelectedItem("");
+      setSelectedHeat("");
+      setFromDate("");
+      setToDate("");
+    }}
+  >
+    Clear Filter
+  </button>
+
+</div>
+
+{/* FILTER INFO BOX */}
+
+<div className="filterBox">
+
+  <div className="filterText">
+    Selected dashboard data is showing according
+    to your applied filter.
+  </div>
+
+  <div className="chips">
+
+    <span>
+      Period: {selectedPeriod}
+    </span>
+
+    {selectedItem && (
+      <span>
+        Item: {selectedItem}
+      </span>
+    )}
+
+    {selectedHeat && (
+      <span>
+        Heat: {selectedHeat}
+      </span>
+    )}
+
+    {fromDate && (
+      <span>
+        From: {fromDate}
+      </span>
+    )}
+
+    {toDate && (
+      <span>
+        To: {toDate}
+      </span>
+    )}
+
+  </div>
+
+</div>
 
 {
-  selectedItem === "open" && (
-    <div className="itemModal">
-      <h3>Select Item</h3>
+  filterType && (
 
-      {itemList.map((item, index) => (
-        <button
-          key={index}
-          className="itemBtn"
-          onClick={() => {
-            setSelectedItem(item);
-          }}
-        >
-          {item}
-        </button>
-      ))}
-    </div>
-  )
-}
+    <div className="applyFilterCard">
 
-{
-  selectedHeat === "open" && (
-    <div className="heatModal">
-      <h3>Select Heat Code</h3>
+      <h2>Apply Filter</h2>
 
-      {heatList.map((heat, index) => (
-        <button
-          key={index}
-          className="heatBtn"
-          onClick={() => {
-            setSelectedHeat(heat);
-          }}
-        >
-          {heat}
-        </button>
-      ))}
-    </div>
-  )
-}
+    
+    {filterType === "period" && (
+    <div>
 
-      {/* FILTER BOX */}
+      <label>Select Period</label>
 
-      <div className="filterBox">
-        <div className="filterText">
-          Selected dashboard data is showing according to your applied filter.
-        </div>
-
-        <div className="chips">
-          <span>Period: {selectedPeriod}</span>
-          {selectedItem && selectedItem !== "open" && (
-            <span>Item: {selectedItem}</span>
-          )}
-          {selectedHeat && selectedHeat !== "open" && (
-            <span>Heat: {selectedHeat}</span>
-          )}
-          {selectedDefect && (
-            <span>Defect: {selectedDefect}</span>
-          )}
-          {selectedPieItem && (
-            <span>Chart Item: {selectedPieItem}</span>
-          )}
-          {fromDate && <span>From: {fromDate}</span>}
-          {toDate && <span>To: {toDate}</span>}
-        </div>
-      </div>
-
-      {
-  showFilter && (
-
-    <div className="filterModal">
-
-      <h3>
-        Filter Dashboard
-      </h3>
-
-      <div className="filterOptions">
-
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "last-week"
-            )
-          }
-        >
+      <select
+        value={selectedPeriod}
+        onChange={(e) =>
+          setSelectedPeriod(e.target.value)
+        }
+      >
+        <option value="last-week">
           Last Week
-        </button>
+        </option>
 
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "current-week"
-            )
-          }
-        >
+        <option value="current-week">
           Current Week
-        </button>
+        </option>
 
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "last-month"
-            )
-          }
-        >
+        <option value="last-month">
           Last Month
-        </button>
+        </option>
 
-        <button
-          className="filterOptionBtn"
-          onClick={() =>
-            setSelectedPeriod(
-              "custom"
-            )
-          }
-        >
+        <option value="custom">
           Custom
-        </button>
+        </option>
+      </select>
 
-      </div>
+    </div>
+    )}
 
       {
-        selectedPeriod ===
-          "custom" && (
-
-          <div
-            className="customDateWrap"
-          >
-
-            <label>
-              From
-            </label>
+        selectedPeriod === "custom" && (
+          <div className="customDateWrap">
 
             <input
               type="date"
               value={fromDate}
-              onChange={(e)=>
-                setFromDate(
-                  e.target.value
-                )
+              onChange={(e) =>
+                setFromDate(e.target.value)
               }
             />
-
-            <label>
-              To
-            </label>
 
             <input
               type="date"
               value={toDate}
-              onChange={(e)=>
-                setToDate(
-                  e.target.value
-                )
+              onChange={(e) =>
+                setToDate(e.target.value)
               }
             />
 
           </div>
         )
       }
+
+  {filterType === "item" && (
+ 
+    <div>
+      <label>Select Item</label>
+
+      <select
+        value={selectedItem}
+        onChange={(e) =>
+          setSelectedItem(e.target.value)
+        }
+      >
+        <option value="">
+          All Products
+        </option>
+
+        {itemList.map((item) => (
+          <option
+            key={item}
+            value={item}
+          >
+            {item}
+          </option>
+        ))}
+      </select>
+    </div>
+  )}
+
+  {filterType === "heat" && (
+    <div>
+      <label>Select Heat Code</label>
+
+      <select
+        value={selectedHeat}
+        onChange={(e) =>
+          setSelectedHeat(e.target.value)
+        }
+      >
+        <option value="">
+          All Heat Codes
+        </option>
+
+        {heatList.map((heat) => (
+          <option
+            key={heat}
+            value={heat}
+          >
+            {heat}
+          </option>
+        ))}
+      </select>
+    </div>
+  )}
+      <button
+  className="applyBtn"
+  onClick={() =>
+    setFilterType("")
+  }
+>
+  Apply Filter
+</button>
 
     </div>
   )

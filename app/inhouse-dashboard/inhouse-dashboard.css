@@ -569,3 +569,56 @@ tbody tr:nth-child(even){
 .breakdownTable tbody tr:nth-child(odd){
   background:#eef3fb;
 }
+
+.applyFilterCard{
+  margin:20px 0;
+  background:#ffffff;
+  padding:24px;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.applyFilterCard h2{
+  width:100%;
+  margin:0 0 10px 0;
+  color:#111827;
+}
+
+.applyFilterCard label{
+  font-weight:600;
+  color:#374151;
+}
+
+.applyFilterCard select{
+  padding:10px 14px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  min-width:180px;
+}
+
+.applyFilterCard input{
+  padding:10px 14px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+}
+
+.applyBtn{
+  background:#16a34a;
+  color:white;
+  border:none;
+  padding:10px 18px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.applyFilterCard > div{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
